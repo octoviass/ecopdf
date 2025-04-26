@@ -28,8 +28,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  http: ^1.2.1
   cloud_firestore: ^4.15.5
-  syncfusion_flutter_pdfviewer: ^24.1.47
   flutter:
     sdk: flutter
   firebase_core: ^2.25.0
@@ -37,6 +37,10 @@ dependencies:
   firebase_auth: ^4.15.0
   in_app_purchase: ^3.1.8
   path_provider: ^2.1.1
+  syncfusion_flutter_core: ^29.1.39
+  syncfusion_flutter_pdf: ^29.1.39
+  syncfusion_flutter_pdfviewer: ^29.1.39
+  syncfusion_flutter_signaturepad: ^29.1.39
 
 
   # The following adds the Cupertino Icons font to your application.

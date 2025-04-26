@@ -91,7 +91,6 @@ Only R5/month thereafter – via Google Pay.
           ),
             ),
       ),
-      ),
-    )
+    );
   }
 }

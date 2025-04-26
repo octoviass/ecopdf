@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -36,8 +35,7 @@ void buySubscription() {
   _iap.buyNonConsumable(purchaseParam: purchaseParam);
 }
 
-void listenToPurchases() {
-  _subscription = _iap.purchaseStream.listen((List<PurchaseDetails> purchases) {
+void listenToPurchases() {_iap.purchaseStream.listen((List<PurchaseDetails> purchases) {
     for (var purchase in purchases) {
       if (purchase.status == PurchaseStatus.purchased) {
         // Save purchase in Firebase or local storage
@@ -52,6 +50,7 @@ void listenToPurchases() {
       }
     }
   });
+  
 }
 
 class MyApp extends StatefulWidget {

@@ -27,9 +27,13 @@ class PdfEditorScreenState extends State<PdfEditorScreen> {
   late Uint8List _pdfData;
 
   Future<void> loadPdf() async {
-    final cachedPdf = await _pdfCacheManager.loadPdf(widget.url.hashCode.toString());
-    if (cachedPdf != null) {
-      _pdfData = cachedPdf;
+    final dynamic cachedPdf = await _pdfCacheManager.loadPdf(widget.url.hashCode.toString());
+    if (cachedPdf is Uint8List) {
+        _pdfData = cachedPdf;
+    } else if (cachedPdf is String) {
+        final response = await http.get(Uri.parse(widget.url));
+        _pdfData = response.bodyBytes;
+        await _pdfCacheManager.savePdf(_pdfData, widget.url.hashCode.toString());
     } else {
       final response = await http.get(Uri.parse(widget.url));
       _pdfData = response.bodyBytes;
@@ -143,7 +147,6 @@ class PdfEditorScreenState extends State<PdfEditorScreen> {
                         if(_textController.text.isNotEmpty) {
                           addTextAnnotation(_textController.text);
                         } else {
-                          print("Empty text");
                         }
 
                       }, icon: Icon(Icons.add))) ,

@@ -30,13 +30,13 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () async {
-                await GoogleSignInProvider().signInWithGoogle();
+                final success = await GoogleSignInProvider().signInWithGoogle();
                 // Navigate to the PdfEditorScreen after successful sign in
-                Navigator.pushReplacement(
-                  context,
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (context) => const PdfEditorScreen()),
                 );
+
               },
               child: const Text('Sign in with Google'),
             ),
